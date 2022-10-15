@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <title>首頁</title>
+  </head>
+  <body>
+    <div class="d-flex">
+      <aside class="sidebar vh-100 border-end bg-white pt-3 d-flex flex-column">
+        <!-- 後臺名稱 -->
+        <h1 class="h6 mb-0 px-4 mb-3">
+          <span class="fw-bold">六角西餐廳</span>-後台管理
+        </h1>
+        <!-- 選單 -->
+        <div class="overflow-auto">
+          <a href="index.html" class="sidebar-link px-4 active"><i class="bi bi-house me-1"></i>首頁</a>
+          <div>
+            <a class="text-decoration-none sidebar-link" href="#menu-order" data-bs-toggle="collapse">
+              <div class="d-flex justify-content-between px-4">
+                <div class="d-flex">
+                  <i class="bi bi-card-checklist me-1"></i>
+                  <p class="mb-0">訂單管理</p>
+                </div>
+                <i class="bi bi-caret-down"></i>
+              </div>
+            </a>
+            <div class="collapse" id="menu-order">
+              <a href="orders.html" class="sidebar-link ps-5">訂單列表</a>
+              <a href="order.html" class="sidebar-link ps-5">單一訂單細節</a>
+            </div>
+            <a href="#" class="sidebar-link px-4"><i class="bi bi-list-check"></i>參考連結</a>
+          </div>
+        </div>
+
+        <!-- 登出按鈕 -->
+        <a
+          class="text-decoration-none link-dark px-4 mt-auto sidebar-link"
+          href="#"
+          ><i class="bi bi-box-arrow-right me-1"></i>登出</a
+        >
+      </aside>
+
+      <main class="main">
+        <div class="border-bottom w-100 sticky-top bg-white">
+          <a
+            class="link-secondary py-3 px-4 d-inline-block border-end"
+            href="#"
+            id="toggle-btn"
+          >
+            <i class="bi bi-arrows-angle-expand"></i>
+          </a>
+        </div>
+        <div class="p-4">
+          <!-- 在線人數、訂單數、營業額 -->
+          <div class="row mb-4 g-4">
+            <div class="col-6 col-lg-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body text-end">
+                  <h3 class="display-6">在線人數</h3>
+                  <p class="display-4 mb-0">3,123</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-6 col-lg-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body text-end">
+                  <h3 class="display-6">訂單數</h3>
+                  <p class="display-4 mb-0">1,092</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body text-end">
+                  <h3 class="display-6">營業額</h3>
+                  <p class="text-info display-4 mb-0">
+                    <span class="fs-3">NT$</span>204,432
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 圖表 -->
+          <div class="row g-4 mb-4">
+            <div class="col-lg-4">
+              <div class="card shadow-sm h-100">
+                <div class="card-body">
+                  <canvas id="pie-chart" class="img-fluid"></canvas>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <canvas id="bar-chart" class="img-fluid"></canvas>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- 圖表JS -->
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+          <script>
+            (() => {
+              const chartColors = {
+                red: "rgb(255, 99, 132)",
+                orange: "rgb(255, 159, 64)",
+                yellow: "rgb(255, 205, 86)",
+                green: "rgb(75, 192, 192)",
+                blue: "rgb(54, 162, 235)",
+                purple: "rgb(153, 102, 255)",
+                grey: "rgb(201, 203, 207)",
+              };
+              var randomScalingFactor = function () {
+                return Math.round(Math.random() * 2000000);
+              };
+
+              const pieCtx = document
+                .getElementById("pie-chart")
+                .getContext("2d");
+              const barCtx = document
+                .getElementById("bar-chart")
+                .getContext("2d");
+
+              const config = {
+                type: "pie",
+                data: {
+                  datasets: [
+                    {
+                      data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                      ],
+                      backgroundColor: [
+                        chartColors.red,
+                        chartColors.orange,
+                        chartColors.yellow,
+                        chartColors.green,
+                        chartColors.blue,
+                      ],
+                      label: "Dataset 1",
+                    },
+                  ],
+                  labels: [
+                    "大麥克全餐",
+                    "肥宅快樂水",
+                    "太爽啦義大利麵",
+                    "薯條加大吃不完",
+                    "兒童餐椅不給坐",
+                  ],
+                },
+                options: {
+                  responsive: true,
+                },
+              };
+              const barConfig = {
+                type: "bar",
+                data: {
+                  datasets: [
+                    {
+                      data: [
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                        randomScalingFactor(),
+                      ],
+                      backgroundColor: [
+                        chartColors.red,
+                        chartColors.orange,
+                        chartColors.yellow,
+                        chartColors.green,
+                        chartColors.blue,
+                        chartColors.purple,
+                      ],
+                      label: "Dataset 1",
+                    },
+                  ],
+                  labels: ["一月", "二月", "三月", "四月", "五月", "六月"],
+                },
+                options: {
+                  responsive: true,
+                },
+              };
+              const pieChart = new Chart(pieCtx, config);
+              const barChart = new Chart(barCtx, barConfig);
+            })();
+          </script>
+
+          <!-- 訂單表格 -->
+          <div class="card shadow-sm">
+            <div class="card-head">
+              <div class="input-group p-2">
+                <div class="input-group-text border-0 bg-white pe-0">
+                  <i class="bi bi-search"></i>
+                </div>
+                <input
+                  type="search"
+                  class="form-control border-0 shadow-none"
+                  placeholder="請輸入要搜尋的內容"
+                /><!-- shadow-none 移除點擊時外框線-->
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover text-nowrap mb-0">
+                  <thead class="bg-light">
+                    <tr class="align-middle">
+                      <th scope="col" class="p-3">訂單編號</th>
+                      <!-- scope="col"欄標題-->
+                      <th scope="col">Email</th>
+                      <th scope="col">用戶名稱</th>
+                      <th scope="col">購買品項</th>
+                      <th scope="col">付款狀態</th>
+                      <th scope="col">購買金額</th>
+                      <th scope="col">編輯</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="align-middle">
+                      <td class="p-3">TX123456789</td>
+                      <td>ab1234@email.com</td>
+                      <td>Winnie</td>
+                      <td>六角西餐：大麥克全家餐</td>
+                      <td class="text-secondary">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td>
+                        <button class="btn btn-outline-dark py-1 px-2">
+                          編輯<i class="bi bi-pen ms-1"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="align-middle">
+                      <td class="p-3">TX123456790</td>
+                      <td>ab1234@email.com</td>
+                      <td>Winnie</td>
+                      <td>六角西餐：大麥克全家餐</td>
+                      <td class="text-secondary">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td>
+                        <button class="btn btn-outline-dark py-1 px-2">
+                          編輯<i class="bi bi-pen ms-1"></i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr class="align-middle">
+                      <td class="p-3">TX123456791</td>
+                      <td>ab1234@email.com</td>
+                      <td>Winnie</td>
+                      <td>六角西餐：大麥克全家餐</td>
+                      <td class="text-secondary">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td>
+                        <button class="btn btn-outline-dark py-1 px-2">
+                          編輯<i class="bi bi-pen ms-1"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="card-footer bg-white py-3">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"
+  ></script>
+    <script src="./stylesheets/javascripts/all.js"></script>
+  </body>
+</html>

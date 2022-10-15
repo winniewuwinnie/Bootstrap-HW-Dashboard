@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="stylesheets/all.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
+    />
+    <title>訂單列表</title>
+  </head>
+  <body>
+    <div class="d-flex">
+      <aside class="sidebar vh-100 border-end bg-white pt-3 d-flex flex-column">
+        <!-- 後臺名稱 -->
+        <h1 class="h6 mb-0 px-4 mb-3">
+          <span class="fw-bold">六角西餐廳</span>-後台管理
+        </h1>
+        <!-- 選單 -->
+        <div class="overflow-auto">
+          <a href="index.html" class="sidebar-link px-4"
+            ><i class="bi bi-house me-1"></i>首頁</a
+          >
+          <div>
+            <a
+              class="text-decoration-none sidebar-link active"
+              href="#menu-order"
+              data-bs-toggle="collapse"
+            >
+              <div class="d-flex justify-content-between px-4">
+                <div class="d-flex">
+                  <i class="bi bi-card-checklist me-1"></i>
+                  <p class="mb-0">訂單管理</p>
+                </div>
+                <i class="bi bi-caret-down"></i>
+              </div>
+            </a>
+            <div class="collapse" id="menu-order">
+              <a href="orders.html" class="sidebar-link ps-5">訂單列表</a>
+              <a href="order.html" class="sidebar-link ps-5">單一訂單細節</a>
+            </div>
+            <a href="#" class="sidebar-link px-4"
+              ><i class="bi bi-list-check"></i>參考連結</a
+            >
+          </div>
+        </div>
+
+        <!-- 登出按鈕 -->
+        <a
+          class="text-decoration-none link-dark px-4 mt-auto sidebar-link"
+          href="#"
+          ><i class="bi bi-box-arrow-right me-1"></i>登出</a
+        >
+      </aside>
+
+      <main class="main">
+        <div class="border-bottom w-100 sticky-top bg-white">
+          <a
+            class="link-secondary py-3 px-4 d-inline-block border-end"
+            href="#"
+            id="toggle-btn"
+          >
+            <i class="bi bi-arrows-angle-expand"></i>
+          </a>
+        </div>
+        <div class="p-4">
+          <!-- 頁籤 -->
+          <ul class="nav nav-pills mb-3">
+            <li class="nav-item">
+              <a
+                class="nav-link rounded-pill active"
+                aria-current="page"
+                href="#"
+                >所有訂單<span class="badge rounded-pill bg-light text-dark ms-1"
+                  >900</span
+                ></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="#"
+                >待處理<span class="badge rounded-pill bg-light text-dark ms-1">600</span></a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link rounded-pill" href="#"
+                >已付款<span class="badge rounded-pill bg-light text-dark ms-1">300</span></a
+              >
+            </li>
+          </ul>
+
+          <!-- 訂單列表 -->
+          <div class="card shadow-sm">
+            <div class="card-head d-flex px-3 py-2">
+              <div class="dropdown">
+                <button
+                  class="btn btn-outline-dark dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  操作
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="input-group">
+                <div class="input-group-text bg-white border-0 pe-0">
+                  <i class="bi bi-search"></i>
+                </div>
+                <input
+                  class="form-control border-0 shadow-none"
+                  type="search"
+                  name="orders"
+                  id="orders"
+                  placeholder="請輸入要搜尋的內容"
+                />
+              </div>
+            </div>
+            <div class="card-body p-0">
+              <div class="table-responsive">
+                <table class="table table-hover text-nowrap mb-0">
+                  <thead>
+                    <tr class="bg-light align-middle">
+                      <th scope="col"></th>
+                      <th scope="col" class="p-3">訂單編號</th>
+                      <!-- scope="col"欄標題-->
+                      <th scope="col">Email</th>
+                      <th scope="col">用戶名稱</th>
+                      <th scope="col">購買品項</th>
+                      <th scope="col">付款狀態</th>
+                      <th scope="col">購買金額</th>
+                      <th scope="col">編輯</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr class="align-middle">
+                      <td class="p-3">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          name="orders"
+                          id="TX123456789"
+                        />
+                      </td>
+                      <td>TX123456789</td>
+                      <td>ab1234@email.com</td>
+                      <td>Winnie</td>
+                      <td>六角西餐：大麥克全家餐</td>
+                      <td class="text-secondary">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td>
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="Button group with nested dropdown"
+                        >
+                          <button type="button" class="btn btn-outline-dark">
+                            編輯<i class="bi bi-pen ms-1"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+                            <button
+                              id="btnGroupDrop1"
+                              type="button"
+                              class="btn btn-outline-dark dropdown-toggle"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              更多
+                            </button>
+                            <ul
+                              class="dropdown-menu"
+                              aria-labelledby="btnGroupDrop1"
+                            >
+                              <li>
+                                <a class="dropdown-item" href="#">修改狀態</a>
+                              </li>
+                              <li>
+                                <a
+                                  class="dropdown-item link-danger"
+                                  href="#"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#deleteModal"
+                                  data-delete-order-num="#TX123456789"
+                                  >刪除訂單</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="align-middle">
+                      <td class="p-3">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          name="orders"
+                          id="TX123456789"
+                        />
+                      </td>
+                      <td>TX123456790</td>
+                      <td>ab1234@email.com</td>
+                      <td>Winnie</td>
+                      <td>六角西餐：大麥克全家餐</td>
+                      <td class="text-secondary">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td>
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="Button group with nested dropdown"
+                        >
+                          <button type="button" class="btn btn-outline-dark">
+                            編輯<i class="bi bi-pen ms-1"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+                            <button
+                              id="btnGroupDrop1"
+                              type="button"
+                              class="btn btn-outline-dark dropdown-toggle"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              更多
+                            </button>
+                            <ul
+                              class="dropdown-menu"
+                              aria-labelledby="btnGroupDrop1"
+                            >
+                              <li>
+                                <a class="dropdown-item" href="#">修改狀態</a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item link-danger" href="#"
+                                  >刪除訂單</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                    <tr class="align-middle">
+                      <td class="p-3">
+                        <input
+                          class="form-check-input"
+                          type="checkbox"
+                          name="orders"
+                          id="TX123456789"
+                        />
+                      </td>
+                      <td>TX123456791</td>
+                      <td>ab1234@email.com</td>
+                      <td>Winnie</td>
+                      <td>六角西餐：大麥克全家餐</td>
+                      <td class="text-secondary">尚未付款</td>
+                      <td class="text-end">900</td>
+                      <td>
+                        <div
+                          class="btn-group"
+                          role="group"
+                          aria-label="Button group with nested dropdown"
+                        >
+                          <button type="button" class="btn btn-outline-dark">
+                            編輯<i class="bi bi-pen ms-1"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+                            <button
+                              id="btnGroupDrop1"
+                              type="button"
+                              class="btn btn-outline-dark dropdown-toggle"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              更多
+                            </button>
+                            <ul
+                              class="dropdown-menu"
+                              aria-labelledby="btnGroupDrop1"
+                            >
+                              <li>
+                                <a class="dropdown-item" href="#">修改狀態</a>
+                              </li>
+                              <li>
+                                <a class="dropdown-item link-danger" href="#"
+                                  >刪除訂單</a
+                                >
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="deleteModal"
+                tabindex="-1"
+                aria-labelledby="deleteModalLabel"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModalLabel">
+                        刪除訂單
+                      </h5>
+                      <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                      ></button>
+                    </div>
+                    <div class="modal-body">
+                      確認要刪除「<span id="#deleteNumber"></span>」訂單嗎？
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger">
+                        確認刪除
+                      </button>
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-bs-dismiss="modal"
+                      >
+                        返回
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="card-footer bg-white py-3">
+              <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-end mb-0">
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+                  <li class="page-item"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item"><a class="page-link" href="#">3</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"
+  ></script>
+    <script src="./stylesheets/javascripts/all.js"></script>
+  </body>
+</html>
