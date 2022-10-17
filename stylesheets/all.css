@@ -8948,6 +8948,8 @@ textarea.form-control-lg {
 
 .main {
   width: 100%;
+  transition: margin-left 0.25s;
+  margin-left: 0;
 }
 
 .sidebar-toggle .sidebar {

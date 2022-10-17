@@ -11,7 +11,7 @@
     />
     <title>訂單列表</title>
   </head>
-  <body>
+  <body class="sidebar-toggle">
     <div class="d-flex">
       <aside class="sidebar vh-100 border-end bg-white pt-3 d-flex flex-column">
         <!-- 後臺名稱 -->
@@ -176,7 +176,7 @@
                               更多
                             </button>
                             <ul
-                              class="dropdown-menu"
+                              class="dropdown-menu py-0"
                               aria-labelledby="btnGroupDrop1"
                             >
                               <li>
@@ -188,7 +188,7 @@
                                   href="#"
                                   data-bs-toggle="modal"
                                   data-bs-target="#deleteModal"
-                                  data-delete-order-num="#TX123456789"
+                                  data-bs-delete-order-num="#TX123456789"
                                   >刪除訂單</a
                                 >
                               </li>
@@ -203,7 +203,7 @@
                           class="form-check-input"
                           type="checkbox"
                           name="orders"
-                          id="TX123456789"
+                          id="TX1234590"
                         />
                       </td>
                       <td>TX123456790</td>
@@ -232,14 +232,19 @@
                               更多
                             </button>
                             <ul
-                              class="dropdown-menu"
+                              class="dropdown-menu py-0"
                               aria-labelledby="btnGroupDrop1"
                             >
                               <li>
                                 <a class="dropdown-item" href="#">修改狀態</a>
                               </li>
                               <li>
-                                <a class="dropdown-item link-danger" href="#"
+                                <a
+                                  class="dropdown-item link-danger"
+                                  href="#"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#deleteModal"
+                                  data-bs-delete-order-num="#TX123456790"
                                   >刪除訂單</a
                                 >
                               </li>
@@ -254,7 +259,7 @@
                           class="form-check-input"
                           type="checkbox"
                           name="orders"
-                          id="TX123456789"
+                          id="TX123456791"
                         />
                       </td>
                       <td>TX123456791</td>
@@ -283,14 +288,19 @@
                               更多
                             </button>
                             <ul
-                              class="dropdown-menu"
+                              class="dropdown-menu py-0"
                               aria-labelledby="btnGroupDrop1"
                             >
                               <li>
                                 <a class="dropdown-item" href="#">修改狀態</a>
                               </li>
                               <li>
-                                <a class="dropdown-item link-danger" href="#"
+                                <a
+                                  class="dropdown-item link-danger"
+                                  href="#"
+                                  data-bs-toggle="modal"
+                                  data-bs-target="#deleteModal"
+                                  data-bs-delete-order-num="#TX123456791"
                                   >刪除訂單</a
                                 >
                               </li>
@@ -324,7 +334,7 @@
                       ></button>
                     </div>
                     <div class="modal-body">
-                      確認要刪除「<span id="#deleteNumber"></span>」訂單嗎？
+                      <p>確認要刪除「<span id="deleteNumber"></span>」訂單嗎？</p>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-danger">
@@ -342,7 +352,15 @@
                 </div>
               </div>
             </div>
-
+            <script>
+              const modalByDeleted=document.querySelector("#deleteModal");
+              modalByDeleted.addEventListener("show.bs.modal",function(e){
+                const button=event.relatedTarget;//指向按鈕
+                const orderId=button.dataset.bsDeleteOrderNum;//運用dataset取得data的內容
+                const modalText=document.querySelector("#deleteNumber")
+                modalText.textContent=orderId;
+              })
+            </script>
             <div class="card-footer bg-white py-3">
               <nav aria-label="Page navigation example">
                 <ul class="pagination justify-content-end mb-0">
@@ -371,6 +389,6 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
     crossorigin="anonymous"
   ></script>
-    <script src="./stylesheets/javascripts/all.js"></script>
+    <script src="./javascripts/all.js"></script>
   </body>
 </html>

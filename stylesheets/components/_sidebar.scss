@@ -11,6 +11,8 @@ $sidebar-width: 280px;
 
 .main {
   width: 100%;
+  transition: margin-left 0.25s;
+  margin-left: 0;
 }
 //展開$sidebar
 .sidebar-toggle {
